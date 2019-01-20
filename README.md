@@ -1,7 +1,8 @@
-# touch2sudo
 <p align="center">
   <img src="https://github.com/prbinu/touch2sudo/raw/master/images/t2s-2.png">
 </p>
+
+# touch2sudo
 
 <p align="center">
   <img src="https://github.com/prbinu/touch2sudo/raw/master/images/t2s-1.png">
@@ -37,7 +38,9 @@ git clone https://github.com/prbinu/touch2sudo
 
 3. Archive: (*Product -> Archive -> Distribute Content -> Build Products -> Next -> Save*) Save the archive folder. The touch2sudo executable will be in the `<ArchiveDir>/Product/usr/local/bin` path.
 
-4. Copy `touch2sudo` binary to `/usr/local/bin`
+4. Install: Copy `touch2sudo` binary to `/usr/local/bin`
+
+5. Run: `touch2sudo`
 
 
 ## Configure ssh-agent with touch2sudo
@@ -73,16 +76,24 @@ Start `ssh-agent`
 $ export SSH_ASKPASS=/usr/local/bin/touch2sudo
 $ export DISPLAY=0
 $ eval $(ssh-agent)
-Agent pid 56587
+Agent pid 51863
 
-$ ssh-add -c ~/.ssh/id_rsa_sudo
-Identity added: /Users/binu/.ssh/id_rsa_sudo (binu@localhost)
+$ ssh-add -L
+The agent has no identities.
+
+$ env | grep SSH
+SSH_AGENT_PID=51863
+SSH_AUTH_SOCK=/var/folders/hm/x1_38yz53td1jty5xgs39dxm2lm58d/T//ssh-JssXsflTuHrC/agent.51862
+SSH_ASKPASS=/usr/local/bin/touch2sudo
+
+$ ssh-add -c id_rsa_sudo
+Identity added: id_rsa_sudo (binu-sudo@binu.local)
 The user must confirm each use of the key
 ```
 
 To make it work, on remote server you need to configure `pam-ssh-agent-auth` - a PAM module that does SSH key authentication for sudo. 
 pam-ssh-agent-auth is based on SSH *agent-forwarding* feature that allow the PAM module to authenticate sudo command using key cached in ssh-agent running on your workstation (Mac).
 
-For the complete information on end to end setup, please read:  <TODO>
+For the complete information on end to end setup, refer: 
+https://medium.com/@prbinu/touch2sudo-enable-remote-sudo-two-factor-authentication-using-mac-touch-id-df638b7da594
 
->

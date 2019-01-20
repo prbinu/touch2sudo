@@ -1,11 +1,16 @@
 # touch2sudo
+<p align="center">
+  <img src="https://github.com/prbinu/touch2sudo/raw/master/images/t2s-2.png">
+</p>
+
+<p align="center">
+  <img src="https://github.com/prbinu/touch2sudo/raw/master/images/t2s-1.png">
+</p>
 
 `touch2sudo` is a standalone program if executed authenticates the user either through Touch ID or password. A successful authentication (confirmation) is signaled by a zero exit status from touch2sudo program.
 To authenticate sudo commands, we configure touch2sudo as `SSH_ASKPASS` confirmation program, invoked by ssh-agent.
 
 Infact this program can be used for any application that requires user authentication on Mac
-
-The setup is described in the following sections
 
 ## Mac configuration
 
@@ -23,7 +28,12 @@ git clone https://github.com/prbinu/touch2sudo
 
 1. Open `touch2sudo.xcodeproj` file using [Xcode](https://developer.apple.com/xcode/)
 
-2. Build: (*Product -> Build*)
+2. Build: (*Product -> Build*) If the build is successful, you may see this dialog:
+
+<p align="center">
+  <img src="https://github.com/prbinu/touch2sudo/raw/master/images/t2s-3.png">
+</p>
+
 
 3. Archive: (*Product -> Archive -> Distribute Content -> Build Products -> Next -> Save*) Save the archive folder. The touch2sudo executable will be in the `<ArchiveDir>/Product/usr/local/bin` path.
 
@@ -57,7 +67,7 @@ SHA256:6Vf0p0iUzQaiXqjQlUU+BYeTGiQqzUeC7z7iBNg7alE binu@localhostThe key's rando
 + - - [SHA256] - - -+
 ```
 
-Start ssh-agent
+Start `ssh-agent`
 
 ```
 $ export SSH_ASKPASS=/usr/local/bin/touch2sudo

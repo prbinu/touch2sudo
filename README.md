@@ -19,9 +19,22 @@ Infact this program can be used for any application that requires user authentic
 
 If you haven't setup Touch ID, you can find the instructions from Apple [here](https://support.apple.com/en-us/HT207054)
 
-## Download and build touch2sudo
+## touch2sudo installation
 
+You have two options: 
+ * Install `touch2sudo` binary using `brew` (OR)
+ * Build from source
+
+### Install using brew
+
+```sh
+brew tap prbinu/touch2sudo
+brew install touch2sudo
 ```
+
+### Build from source
+
+```sh
 git clone https://github.com/prbinu/touch2sudo
 ```
 
@@ -47,7 +60,7 @@ git clone https://github.com/prbinu/touch2sudo
 
 Generate a new SSH key pair for sudo:
 
-```
+```sh
 $ ssh-keygen -t rsa -b 2048
 Generating public/private rsa key pair.
 Enter file in which to save the key (/Users/binu/.ssh/id_rsa): /Users/binu/.ssh/id_rsa_sudo
@@ -72,7 +85,7 @@ SHA256:6Vf0p0iUzQaiXqjQlUU+BYeTGiQqzUeC7z7iBNg7alE binu@localhostThe key's rando
 
 Start `ssh-agent`
 
-```
+```sh
 $ export SSH_ASKPASS=/usr/local/bin/touch2sudo
 $ export DISPLAY=0
 $ eval $(ssh-agent)

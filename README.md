@@ -107,6 +107,9 @@ The user must confirm each use of the key
 To make it work, on remote server you need to configure `pam-ssh-agent-auth` - a PAM module that does SSH key authentication for sudo. 
 pam-ssh-agent-auth is based on SSH *agent-forwarding* feature that allow the PAM module to authenticate sudo command using key cached in ssh-agent running on your workstation (Mac).
 
+**SSH Agent Forwarding Security**
+To avoid exposure of other keys in your local ssh-agent to the connecting host, you may a use a seperate SSH key (for sudo) with a dedicated `ssh-agent` for agent-forwarding. Use [`ForwardAgent`](https://man.openbsd.org/ssh_config#ForwardAgent) option to pass the path/env-var of this sudo ssh-agent.
+
 For the complete information on end to end setup, refer: 
 https://medium.com/@prbinu/touch2sudo-enable-remote-sudo-two-factor-authentication-using-mac-touch-id-df638b7da594
 
